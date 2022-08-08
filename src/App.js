@@ -1,9 +1,15 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Categories from "./components/Categories/Categories";
+import Home from "./routes/Home/Home";
 
 const App = () => {
-  return <Categories />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+    </Routes>
+  );
 };
 
 export default App;
