@@ -9,20 +9,22 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 const SignIn = () => {
+  //to authenticate the user with google login
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     const userDocRef = await createUserDocumentFromAuth(user);
   };
 
-  useEffect(() => {
-    const asRes = async () => {
-      const res = await getRedirectResult(auth);
-      if (res) {
-        const userDocRef = await createUserDocumentFromAuth(res.user);
-      }
-    };
-    asRes();
-  }, []);
+  //to authenticate the user with google redirect
+  //   useEffect(() => {
+  //     const asRes = async () => {
+  //       const res = await getRedirectResult(auth);
+  //       if (res) {
+  //         const userDocRef = await createUserDocumentFromAuth(res.user);
+  //       }
+  //     };
+  //     asRes();
+  //   }, []);
 
   return (
     <>
