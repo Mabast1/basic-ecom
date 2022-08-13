@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 import CrwnLogo from "../assets/crown.svg";
-
 import "./Navbar.scss";
+import { UserContext } from "../../Context/userContext";
 
 const Navbar = () => {
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
+
   return (
     <>
       <div className="navbar">
@@ -16,9 +19,13 @@ const Navbar = () => {
           <Link className="nav-link" to="/shop">
             Shop
           </Link>
-          <Link className="nav-link" to="/auth">
-            Sign In
-          </Link>
+          {currentUser ? (
+            <span className="nav-link">Sign Out</span>
+          ) : (
+            <Link className="nav-link" to="/auth">
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />
