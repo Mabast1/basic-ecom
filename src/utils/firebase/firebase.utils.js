@@ -88,4 +88,4 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 };
 
 //signout a user with email and password
-export const signOutUser = async () => signOutUser(auth);
+export const signOutUser = async () => await signOut(auth);
