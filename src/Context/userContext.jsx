@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   createUserDocumentFromAuth,
@@ -14,12 +15,15 @@ export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const value = { currentUser, setCurrentUser };
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
       setCurrentUser(user);
+      navigate("/");
     });
 
     return unsubscribe;
