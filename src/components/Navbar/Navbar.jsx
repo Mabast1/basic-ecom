@@ -3,16 +3,11 @@ import { Outlet, Link } from "react-router-dom";
 
 import CrwnLogo from "../assets/crown.svg";
 import "./Navbar.scss";
-import { UserContext } from "../../Context/userContext";
+import { UserContext } from "../../Context/UserContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 const Navbar = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const handleSignOut = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
+  const { currentUser } = useContext(UserContext);
 
   return (
     <>
@@ -25,7 +20,7 @@ const Navbar = () => {
             Shop
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={handleSignOut}>
+            <span className="nav-link" onClick={signOutUser}>
               Sign Out
             </span>
           ) : (
