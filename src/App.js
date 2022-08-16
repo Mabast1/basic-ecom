@@ -2,9 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./routes/Home/Home";
-import Authentication from "./routes/Authentication/Authentication";
-import Shop from "./routes/Shop/Shop";
+import Home from "./Pages/Home/Home";
+import Authentication from "./Pages/Authentication/Authentication";
+import Shop from "./Pages/Shop/Shop";
 
 const App = () => {
   return (
