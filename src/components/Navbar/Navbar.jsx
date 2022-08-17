@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
-import CrwnLogo from "../assets/crown.svg";
 import "./Navbar.scss";
+import CrwnLogo from "../assets/crown.svg";
 import { UserContext } from "../../Context/UserContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import CartIcon from "../CartIcon/CartIcon";
+import CartDropDown from "../CartDropDown/CartDropDown";
+import { CartContext } from "../../Context/CartContext";
 
 const Navbar = () => {
   const { currentUser } = useContext(UserContext);
+  const { isClicked, setIsClicked } = useContext(CartContext);
 
   return (
     <>
@@ -28,7 +32,11 @@ const Navbar = () => {
               Sign In
             </Link>
           )}
+          <div onClick={() => setIsClicked((prev) => !prev)}>
+            <CartIcon />
+          </div>
         </div>
+        {!isClicked && <CartDropDown />}
       </div>
       <Outlet />
     </>
