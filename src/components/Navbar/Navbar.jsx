@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 
 import "./Navbar.scss";
 import CrwnLogo from "../assets/crown.svg";
-import { UserContext } from "../../Context/UserContext";
+import { UserContext } from "../../Context/userContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropDown from "../CartDropDown/CartDropDown";
