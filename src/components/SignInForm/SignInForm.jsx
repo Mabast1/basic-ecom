@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   signInAuthUserWithEmailAndPassword,
@@ -17,6 +18,8 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,6 +42,8 @@ const SignInForm = () => {
         email,
         password
       );
+
+      navigate("/");
 
       resetFormFields();
     } catch (err) {
