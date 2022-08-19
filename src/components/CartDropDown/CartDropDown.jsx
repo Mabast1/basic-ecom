@@ -7,7 +7,7 @@ import CartItem from "../CartItem/CartItem";
 import { CartContext } from "../../Context/CartContext";
 
 const CartDropDown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setIsClicked } = useContext(CartContext);
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,14 @@ const CartDropDown = () => {
         ))}
       </div>
 
-      <Button onClick={() => navigate("/checkout")}>Checkout</Button>
+      <Button
+        onClick={() => {
+          navigate("/checkout");
+          setIsClicked(CartContext);
+        }}
+      >
+        Checkout
+      </Button>
     </div>
   );
 };
