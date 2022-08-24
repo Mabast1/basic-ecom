@@ -1,11 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
 
-import {
-  createUserDocumentFromAuth,
-  onAuthStateChangedListener,
-} from "../utils/firebase/firebase.utils.js";
-import productsData from "../data.js";
-// import { addCollectionAndDocuments } from "../utils/firebase/firebase.utils.js";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils.js";
 
 export const CategoriesContext = createContext({
@@ -23,6 +17,7 @@ export const CategoriesProvider = ({ children }) => {
   useEffect(() => {
     const getCategoriesMap = async () => {
       const categoriesMap = await getCategoriesAndDocuments();
+      console.log(categoriesMap);
       setCategoriesMap(categoriesMap);
     };
     getCategoriesMap();
